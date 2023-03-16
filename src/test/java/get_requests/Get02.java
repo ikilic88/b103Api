@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.*;
-import static sun.net.InetAddressCachePolicy.get;
+
 
 public class Get02 {
     /*
