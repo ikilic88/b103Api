@@ -1,15 +1,16 @@
 package pojos;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class JsonPlaceHolderPojo {
+
     private Integer userId;
     private String title;
     private Boolean completed;
 
     public JsonPlaceHolderPojo() {
-
     }
 
     public JsonPlaceHolderPojo(Integer userId, String title, Boolean completed) {
@@ -17,6 +18,7 @@ public class JsonPlaceHolderPojo {
         this.title = title;
         this.completed = completed;
     }
+
 
     public Integer getUserId() {
         return userId;
@@ -51,11 +53,3 @@ public class JsonPlaceHolderPojo {
                 '}';
     }
 }
-/*
-{
-                                    "userId": 55,
-                                    "title": "Tidy your room",
-                                    "completed": false,
-                                    "id": 201
-                                    }
- */
