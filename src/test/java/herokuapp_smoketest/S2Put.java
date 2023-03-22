@@ -6,9 +6,11 @@ import io.restassured.response.Response;
 import org.junit.Test;
 import pojos.BookingDatesPojo;
 import pojos.BookingPojo;
+import util.ObjectMapperUtils;
 
 import static herokuapp_smoketest.S1Post.bookingId;
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 import static util.AuthenticationHerOkuApp.generateToken;
 
 public class S2Put extends HerOkuAppBaseUrl {
@@ -62,6 +64,23 @@ public class S2Put extends HerOkuAppBaseUrl {
                 body(expectedData).put("/{first}/{second}");
 
         response.prettyPrint();
+
+        // Do assertion
+        BookingPojo actualData = ObjectMapperUtils.convertJsonToJava(response.asString(),BookingPojo.class);
+        assertEquals(200,response.statusCode());
+
+
+        assertEquals(200, response.statusCode());
+        assertEquals(expectedData.getFirstname(), actualData.getFirstname());
+        assertEquals(expectedData.getLastname(), actualData.getLastname());
+        assertEquals(expectedData.getTotalprice(), actualData.getTotalprice());
+        assertEquals(expectedData.getDepositpaid(), actualData.getDepositpaid());
+
+        assertEquals(bookingDatesPojo.getCheckin(), actualData.getBookingdates().getCheckin());
+        assertEquals(bookingDatesPojo.getCheckout(), actualData.getBookingdates().getCheckout());
+
+        assertEquals(expectedData.getAdditionalneeds(), actualData.getAdditionalneeds());
+
 
     }
 

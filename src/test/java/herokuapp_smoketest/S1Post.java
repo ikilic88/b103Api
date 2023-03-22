@@ -11,7 +11,7 @@ import util.ObjectMapperUtils;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
-public class S01_Post extends HerOkuAppBaseUrl {
+public class S1Post extends HerOkuAppBaseUrl {
     /*
     Given
        1) https://restful-booker.herokuapp.com/booking
@@ -48,6 +48,7 @@ public class S01_Post extends HerOkuAppBaseUrl {
         }
      */
     static int bookingId;
+
     @Test
     public void post01() {
         //Set the URL
@@ -77,6 +78,7 @@ public class S01_Post extends HerOkuAppBaseUrl {
 
         assertEquals(expectedData.getAdditionalneeds(), actualData.getBooking().getAdditionalneeds());
 
-        int bookingId= actualData.getBookingid();
+        bookingId = actualData.getBookingid();
+
     }
 }
